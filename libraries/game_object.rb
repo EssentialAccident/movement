@@ -23,4 +23,8 @@ class GameObject
                        @position.x - (@size / 2), @position.y - @size / 2, Gosu::Color::WHITE,
                        @position.x - (@size / 2), @position.y + @size / 2, Gosu::Color::WHITE)
   end
+
+  def apply_force(force)
+    @acceleration += force
+  end
 end
