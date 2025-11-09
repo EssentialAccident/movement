@@ -23,10 +23,6 @@ class Main < Gosu::Window
 
   def update
     @game_object.update
-    @game_object.apply_force(Vector2d.new(0.1, 0)) if button_down?(Gosu::KB_RIGHT)
-    @game_object.apply_force(Vector2d.new(-0.1, 0)) if button_down?(Gosu::KB_LEFT)
-    @game_object.apply_force(Vector2d.new(0, 0.1)) if button_down?(Gosu::KB_DOWN)
-    @game_object.apply_force(Vector2d.new(0, -0.1)) if button_down?(Gosu::KB_UP)
   end
 
   def draw

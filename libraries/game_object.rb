@@ -4,7 +4,7 @@
 class GameObject
   def initialize(position, size)
     @position = position
-    @velocity = Vector2d.new(-0.1, 0)
+    @velocity = Vector2d.new(0, 0)
     @acceleration = Vector2d.new(0, 0)
 
     @size = size
@@ -14,9 +14,9 @@ class GameObject
     @velocity += @acceleration
     @position += @velocity
 
-    @acceleration = Vector2d.new(0, 0)
+    @acceleration *= 0
 
-    puts "Position: #{@position}, Velocity: #{@velocity}, Angle: #{@velocity.angle * 180 / Math::PI}, Acceleration: #{@acceleration} "
+    @position = Vector2d.new(@position.x % WINDOW_WIDTH, @position.y % WINDOW_HEIGHT)
   end
 
   def draw
@@ -39,7 +39,6 @@ class GameObject
     world = pts.map do |pt|
       x = pt.x * cos_angle - pt.y * sin_angle + @position.x
       y = pt.x * sin_angle + pt.y * cos_angle + @position.y
-      puts "Point: #{pt}, Transformed Point: (#{x}, #{y})"
       Vector2d.new(x, y)
     end
 
